@@ -73,6 +73,7 @@ export function createGui(p: GuiParams, h: GuiHandlers): { gui: GUI; refresh: ()
   out.add({ png: h.onScreenshot }, 'png').name('Screenshot (PNG)');
   mech.close();
   out.close();
+  gui.close();
 
   return {
     gui,

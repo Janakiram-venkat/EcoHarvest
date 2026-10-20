@@ -4,13 +4,13 @@ import { COMPONENTS, COMPONENT_IDS, type ComponentId } from '../config/component
 
 /** Callout offsets (px) from the green anchor dot to the label box — mirrors the reference composition. */
 const OFFSETS: Record<ComponentId, [number, number]> = {
-  A: [-170, -80],
+  A: [-160, 0],
   B: [150, -6],
   C: [150, -24],
-  D: [120, -46],
+  D: [160, 28],
   E: [100, 92],
   F: [150, 40],
-  G: [-150, -60],
+  G: [-150, -70],
   H: [130, 14],
 };
 

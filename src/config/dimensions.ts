@@ -186,8 +186,8 @@ export const IR = {
   tubeRadius: 0.0055,
   reflectorRadius: 0.0155,
   color: 0xff6a1a,
-  maxEmissive: 22,
-  maxLight: 38,
+  maxEmissive: 7,
+  maxLight: 10,
 } as const;
 
 export const EXHAUST = {

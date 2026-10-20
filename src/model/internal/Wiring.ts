@@ -24,7 +24,7 @@ export function createWiring(ctx: PartContext): THREE.Group {
     },
     {
       // PCB → over the top front rail → grinder motor on the right
-      pts: [v(0.04, PCB.centerY + 0.05, PCB.z - 0.004), v(0.06, 0.3, 0.135), v(0.1, 0.382, 0.11), v(0.125, 0.38, 0.04), v(GRINDER.motor.x0 + 0.012, GRINDER.shaft.y + GRINDER.motor.radius + 0.006, GRINDER.shaft.z)],
+      pts: [v(0.05, PCB.centerY + 0.05, PCB.z - 0.004), v(0.118, PCB.centerY + 0.06, 0.141), v(0.137, 0.3, 0.125), v(0.138, 0.33, 0.08), v(0.128, 0.37, 0.035), v(GRINDER.motor.x0 + 0.012, GRINDER.shaft.y + GRINDER.motor.radius + 0.006, GRINDER.shaft.z)],
       colors: ['red', 'black', 'white'],
     },
     {

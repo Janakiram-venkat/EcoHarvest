@@ -30,7 +30,7 @@ export class PostFX {
     this.gtao.updatePdMaterial({ lumaPhi: 10, depthPhi: 2, normalPhi: 3, radius: 6, rings: 2, samples: 16 });
     this.gtao.blendIntensity = 0.85;
     this.composer.addPass(this.gtao);
-    this.bloom = new UnrealBloomPass(new THREE.Vector2(w, h), 0.32, 0.4, 2.2);
+    this.bloom = new UnrealBloomPass(new THREE.Vector2(w, h), 0.24, 0.4, 2.4);
     this.composer.addPass(this.bloom);
     this.smaa = new SMAAPass(w, h);
     this.composer.addPass(this.smaa);

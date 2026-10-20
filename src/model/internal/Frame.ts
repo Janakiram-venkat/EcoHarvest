@@ -76,18 +76,21 @@ export function createFrame(ctx: PartContext): THREE.Group {
     if (i === 0 || i === railYs.length - 1) addRail('x', 1, y);
   });
 
-  // Inner liners around the drying chamber (reflect IR, carry the lamps).
+  // Inner liners around the drying chamber (reflect IR, carry the lamps). Rougher sheet finish so the
+  // opposite lamp's area light spreads into a soft glow instead of a mirror-sharp rectangle.
+  const linerMat = ctx.mats.satin.clone();
+  linerMat.roughness = 0.6;
   const lh = LINER.topY - LINER.bottomY;
   const ly = (LINER.topY + LINER.bottomY) / 2;
   for (const sx of [-1, 1]) {
-    const liner = mesh(rbox(LINER.thickness, lh, 2 * LINER.halfSpanZ, 0.0004), ctx.mats.satin, 'SideLiner');
+    const liner = mesh(rbox(LINER.thickness, lh, 2 * LINER.halfSpanZ, 0.0004), linerMat, 'SideLiner');
     liner.position.set(sx * LINER.sideX, ly, 0);
     g.add(tag(liner, { xray: 'ghost' }));
     for (const yy of [LINER.bottomY + 0.012, LINER.topY - 0.012])
       for (const zz of [-LINER.halfSpanZ + 0.012, LINER.halfSpanZ - 0.012])
         addBolt(new THREE.Vector3(sx * (LINER.sideX - LINER.thickness / 2), yy, zz), new THREE.Vector3(-sx, 0, 0));
   }
-  const back = mesh(rbox(2 * LINER.halfSpanX, lh, LINER.thickness, 0.0004), ctx.mats.satin, 'BackLiner');
+  const back = mesh(rbox(2 * LINER.halfSpanX, lh, LINER.thickness, 0.0004), linerMat, 'BackLiner');
   back.position.set(0, ly, LINER.backZ);
   g.add(tag(back, { xray: 'ghost' }));
 
@@ -112,7 +115,7 @@ export function createFrame(ctx: PartContext): THREE.Group {
     g.add(runner, runnerWeb);
   }
 
-  const boltMesh = new THREE.InstancedMesh(boltGeometry(), ctx.mats.polished, bolts.length);
+  const boltMesh = new THREE.InstancedMesh(boltGeometry(), ctx.mats.satin, bolts.length);
   boltMesh.name = 'FrameBolts';
   bolts.forEach((m, i) => boltMesh.setMatrixAt(i, m));
   boltMesh.castShadow = true;

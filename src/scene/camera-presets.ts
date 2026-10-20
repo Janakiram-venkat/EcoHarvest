@@ -12,9 +12,9 @@ export interface CameraPreset {
 /** Camera presets; `exterior` and `cutaway` reproduce the left and right halves of the reference render. */
 export const PRESETS: Record<ViewMode, CameraPreset> = {
   exterior: { position: [0.52, 0.47, 1.08], target: [0.02, 0.225, 0] },
-  lid: { position: [0.4, 0.66, 0.8], target: [0.01, 0.27, 0] },
-  cutaway: { position: [0.13, 0.4, 1.02], target: [0.05, 0.235, 0.03] },
-  xray: { position: [-0.52, 0.46, 0.72], target: [0, 0.23, 0] },
+  lid: { position: [0.5, 0.8, 1.02], target: [0.01, 0.27, 0] },
+  cutaway: { position: [0.17, 0.44, 1.28], target: [0.06, 0.245, 0.03] },
+  xray: { position: [-0.62, 0.52, 0.92], target: [0, 0.23, 0] },
   exploded: { position: [0.95, 0.72, 1.3], target: [0.02, 0.27, 0] },
 };
 

@@ -61,7 +61,7 @@ export class FoodWaste extends THREE.Group {
     const hd = HOPPER.depth / 2 - 0.008;
     const yMin = GRINDER.shaft.y + 0.012;
     const top = (x: number, dz: number): number =>
-      0.392 + 0.016 * Math.max(0, 1 - (x / hw) ** 2) * Math.max(0, 1 - (dz / hd) ** 2);
+      0.396 + 0.022 * Math.max(0, 1 - (x / hw) ** 2) * Math.max(0, 1 - (dz / hd) ** 2);
     const yMax = top(0, 0);
 
     for (const kind of kinds) {

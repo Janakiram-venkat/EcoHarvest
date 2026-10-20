@@ -92,7 +92,7 @@ export class Shell extends THREE.Group {
     fp.position.set(0, SHELL.y, D2 - T);
     this.frontPanel.name = 'FrontPanel';
     this.frontPanel.add(tag(fp, { xray: 'ghost' }));
-    tag(this.frontPanel, { cutaway: 'hide' });
+    tag(this.frontPanel, { cutaway: 'hide', xray: 'ghost' });
 
     this.add(this.body, this.rightPanel, this.frontPanel);
   }

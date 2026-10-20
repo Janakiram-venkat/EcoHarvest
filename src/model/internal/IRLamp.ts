@@ -50,7 +50,7 @@ export class IRLamp extends THREE.Group {
     capGeo.rotateX(Math.PI / 2);
     const clipGeo = new THREE.BoxGeometry(0.004, 0.003, 0.016);
     for (const sz of [-1, 1]) {
-      const cap = mesh(capGeo, ctx.mats.ceramic, 'CeramicCap');
+      const cap = mesh(capGeo, ctx.mats.satin, 'LampEndCap');
       cap.position.set(x, IR.y, IR.z + sz * (L / 2 + 0.004));
       const clip = mesh(clipGeo, ctx.mats.polished, 'LampClip');
       clip.position.set(x + side * 0.008, IR.y, IR.z + sz * (L / 2 + 0.004));
@@ -81,7 +81,7 @@ export class IRLamp extends THREE.Group {
   setLevel(level: number): void {
     const l = Math.max(0, level);
     this.filamentMat.emissiveIntensity = IR.maxEmissive * l;
-    this.quartzMat.emissiveIntensity = 0.9 * l;
+    this.quartzMat.emissiveIntensity = 0.35 * l;
     this.light.intensity = IR.maxLight * l;
     this.bounce.intensity = 0.06 * l;
     this.light.visible = l > 0.001;
