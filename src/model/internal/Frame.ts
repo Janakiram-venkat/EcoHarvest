@@ -83,14 +83,18 @@ export function createFrame(ctx: PartContext): THREE.Group {
   const lh = LINER.topY - LINER.bottomY;
   const ly = (LINER.topY + LINER.bottomY) / 2;
   for (const sx of [-1, 1]) {
-    const liner = mesh(rbox(LINER.thickness, lh, 2 * LINER.halfSpanZ, 0.0004), linerMat, 'SideLiner');
+    const liner = mesh(new THREE.BoxGeometry(LINER.thickness, lh, 2 * LINER.halfSpanZ), linerMat, 'SideLiner');
     liner.position.set(sx * LINER.sideX, ly, 0);
     g.add(tag(liner, { xray: 'ghost' }));
     for (const yy of [LINER.bottomY + 0.012, LINER.topY - 0.012])
       for (const zz of [-LINER.halfSpanZ + 0.012, LINER.halfSpanZ - 0.012])
         addBolt(new THREE.Vector3(sx * (LINER.sideX - LINER.thickness / 2), yy, zz), new THREE.Vector3(-sx, 0, 0));
   }
-  const back = mesh(rbox(2 * LINER.halfSpanX, lh, LINER.thickness, 0.0004), linerMat, 'BackLiner');
+  // Back liner faces the camera in Cutaway: bead-blasted finish so the narrow lamp lights don't mirror as hot dots.
+  const backMat = linerMat.clone();
+  backMat.metalness = 0.55;
+  backMat.roughness = 0.85;
+  const back = mesh(new THREE.BoxGeometry(2 * LINER.halfSpanX, lh, LINER.thickness), backMat, 'BackLiner');
   back.position.set(0, ly, LINER.backZ);
   g.add(tag(back, { xray: 'ghost' }));
 
